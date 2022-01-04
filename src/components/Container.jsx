@@ -32,14 +32,18 @@ const GridItem = styled.div`
     padding: 20px;
     text-align: ${props=>props.align};
     border-radius: 10px;
-    border: 1px solid black;
 `
 
 const UL = styled.ul`
     list-style-type: none;
+    padding: 0;
+`
+const LI = styled.li`
+    line-height: 30px;
 `
 
-export {GridContainer, GridItem, UL}
+
+export {GridContainer, GridItem, UL, LI}
 
 export default function Container(props) {
     return (

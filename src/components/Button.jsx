@@ -41,6 +41,7 @@ import styled, {css} from 'styled-components'
 
 
 const Button = styled.button`
+    ${props=> props.type && css `type:${props=>props.type};`}
     ${props=> props.color ? css `color:${props=>props.color};`: `color: white;`}
     ${props=> props.black ? css `background-color: #404040;`
             : props.red ? css `background-color: #ff1f1f;`

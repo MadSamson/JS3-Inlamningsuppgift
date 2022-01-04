@@ -13,7 +13,14 @@ const StyledHeaders = styled.h1`
     text-align: center;
     text-transform: uppercase;
 `
+const Header2 = styled.h2`
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 30px;
+    text-align: center;
 
+`
+export {Header2}
 
 export default function Heaer1(props) {
     return (

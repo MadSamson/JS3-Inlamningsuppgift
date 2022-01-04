@@ -43,8 +43,8 @@ export default function CustomerRegistration(props) {
                 <Input type='text' value={website} placeholder='www.website.com' setValue={setWebsite}/> 
                 <Input type='text' value={email} placeholder='email@address.com' setValue={setEmail}/>
                 <Input type='text' value={phoneNumber} placeholder='Phone Number' setValue={setPhoneNumber}/>
-                <Button type='submit'>Add</Button>
-                <Link to='/'><Button left={10} black>Start Page</Button></Link>
+                <Button type='submit' right={20} top={15} >Add</Button>
+                <Link to='/'><Button left={20} black>Start Page</Button></Link>
             </form>
         </div>
     )

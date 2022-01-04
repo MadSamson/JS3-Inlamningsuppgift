@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import {GeneralContext} from '../App'
-import Container, {GridItem, GridContainer, UL} from './Container'
+import Container, {GridItem, GridContainer, UL, LI} from './Container'
 import Input from './Input'
 import {Button} from './Button'
 import Heaer1 from './Heaer1'
@@ -20,6 +20,7 @@ export default function DetailPage(props) {
     const[phoneNumber, setPhoneNumber] = useState('')
 
     const {customers} = useContext(GeneralContext)
+    const {userInfo} = useContext(GeneralContext)
     const navigate = useNavigate()
 
     const id = props.id 
@@ -104,22 +105,29 @@ export default function DetailPage(props) {
                         {/* <Heaer1 fontsize={20}>Customers List</Heaer1> */}
                         {clientInfo ? (
                         <UL>
-                            <li>Name: {clientInfo.name}</li>
-                            <li>Organisation Number: {clientInfo.organisationNr}</li>
-                            <li>VAT Number:{clientInfo.vatNr}</li>
-                            <li>Reference: {clientInfo.reference}</li>
-                            <li>Payment Term: {clientInfo.paymentTerm}</li>
-                            <li>Website: {clientInfo.website}</li>
-                            <li>Email Address:{clientInfo.email}</li>
-                            <li>Phone Number:{clientInfo.phoneNumber}</li>
-                        
+                            <LI>Name: {clientInfo.name}</LI>
+                            <LI>Organisation Number: {clientInfo.organisationNr}</LI>
+                            <LI>VAT Number:{clientInfo.vatNr}</LI>
+                            <LI>Reference: {clientInfo.reference}</LI>
+                            <LI>Payment Term: {clientInfo.paymentTerm}</LI>
+                            <LI>Website: {clientInfo.website}</LI>
+                            <LI>Email Address:{clientInfo.email}</LI>
+                            <LI>Phone Number:{clientInfo.phoneNumber}</LI>
                         </UL>
                         ) : 'Not Found'}
                         <Button red onClick={(e) => handleOnDelete(id)}>Delete</Button>
                     </GridItem>
             </GridContainer>
         </Container>
-
+        <br/>
+        <br/>
+        <br/>
+        {userInfo &&
+                <>
+                    <samp><b> {userInfo.firstName} {userInfo.lastName}</b></samp>
+                    <samp> {userInfo.email}</samp>
+                </>
+        }
         </>
     )
 }

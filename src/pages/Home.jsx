@@ -1,42 +1,14 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, { useContext } from 'react'
 import GetCustomersList from '../components/GetCustomersList'
 import { GeneralContext } from '../App'
 import CustomerRegistration from '../components/CustomerRegistration'
 import Container, {GridItem, GridContainer} from '../components/Container'
-import Heaer1 from '../components/Heaer1'
+import Heaer1, {Header2} from '../components/Heaer1'
 
 
-export default function Home() {
-    const {userInfo, setUserInfo} = useContext(GeneralContext)
-    const{setCustomers} = useContext(GeneralContext)
-
-    useEffect(() => {
-        getCustomers()
-
-        const token = localStorage.getItem('js3')
-        const headers = {
-            'Content-Type' : 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-        fetch('https://frebi.willandskill.eu/api/v1/me',{
-            headers: headers
-        })
-        .then(res=>res.json())
-        .then(data=>setUserInfo(data))
-    }, [])
-
-    function getCustomers() {
-        const token = localStorage.getItem('js3')
-        const headers = {
-            Authorization: `Bearer ${token}`,
-        }
-        const url = 'https://frebi.willandskill.eu/api/v1/customers/'
-        fetch(url,{headers : headers})
-        .then(res=>res.json())
-        .then(data=>{
-            setCustomers(data.results)
-        })
-    }
+export default function Home(props) {
+    const {userInfo} = useContext(GeneralContext)
+    
     
     return (
         <>
@@ -44,10 +16,10 @@ export default function Home() {
                 <Heaer1>Home</Heaer1>
                 <GridContainer>
                     <GridItem>
-                        <CustomerRegistration onSuccess={getCustomers}/>
+                        <CustomerRegistration onSuccess={props.success}/>
                     </GridItem>
                     <GridItem align={'left'}>
-                        <Heaer1 fontsize={15}>Customer List</Heaer1>
+                        <Header2 fontsize={15}>Customer List</Header2>
                         <GetCustomersList/>
                     </GridItem>
                 </GridContainer>
