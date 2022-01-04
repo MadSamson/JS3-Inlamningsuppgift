@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import CustomerDetailPage from './pages/CustomerDetailPage'
 import CreateUser from './pages/CreateUser'
 import StartPage from './pages/StartPage'
+import NotFound from './pages/NotFound'
 const GeneralContext = createContext([])
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path='/home' element={<Home success={getCustomers}/>}/>
         <Route path='/home/:id' element={<CustomerDetailPage/>}/>
         <Route path='create-user' element={<CreateUser/>}/>
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
     </GeneralContext.Provider>
   );
